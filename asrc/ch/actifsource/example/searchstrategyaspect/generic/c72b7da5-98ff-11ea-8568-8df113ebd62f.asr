@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<resource format="5.6.0" guid="c72b7da5-98ff-11ea-8568-8df113ebd62f">
+  <predicate guid="3169f49a-f91f-11d9-bb45-5fabdff7c7da">
+    <object statement-guid="c72b7da6-98ff-11ea-8568-8df113ebd62f" type="resource" guid="21d630db-fcbb-11e9-aa26-3d70b64de327" />
+  </predicate>
+  <predicate guid="33fc8660-f91f-11d9-bb45-5fabdff7c7da">
+    <object statement-guid="c72b7da7-98ff-11ea-8568-8df113ebd62f" type="literal">SimpleSearch_ID</object>
+  </predicate>
+  <predicate guid="95205a8d-fcbb-11e9-aa26-3d70b64de327">
+    <object statement-guid="c72b7da8-98ff-11ea-8568-8df113ebd62f" type="literal">SimpleSearchTestID</object>
+  </predicate>
+</resource>
+

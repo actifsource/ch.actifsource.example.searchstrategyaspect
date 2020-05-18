@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<resource format="5.6.0" guid="ba220a8b-98ef-11ea-8ef1-cb1cd2be9da3">
+  <predicate guid="3169f49a-f91f-11d9-bb45-5fabdff7c7da">
+    <object statement-guid="ba220a8c-98ef-11ea-8ef1-cb1cd2be9da3" type="resource" guid="21d630db-fcbb-11e9-aa26-3d70b64de327" />
+  </predicate>
+  <predicate guid="33fc8660-f91f-11d9-bb45-5fabdff7c7da">
+    <object statement-guid="ba220a8d-98ef-11ea-8ef1-cb1cd2be9da3" type="literal">HirarchySearch_ID</object>
+  </predicate>
+  <predicate guid="95205a8d-fcbb-11e9-aa26-3d70b64de327">
+    <object statement-guid="ba220a8e-98ef-11ea-8ef1-cb1cd2be9da3" type="literal">HirarchySearchTestID</object>
+  </predicate>
+</resource>
+
