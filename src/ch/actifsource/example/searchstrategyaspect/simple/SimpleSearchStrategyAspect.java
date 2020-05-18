@@ -1,13 +1,3 @@
-/*******************************************************************************
- * Copyright (c) 2010 actifsource GmbH.
- * All rights reserved. This program and the accompanying materials
- * are made available under the terms of the Eclipse Public License v1.0
- * which accompanies this distribution, and is available at
- * http://www.eclipse.org/legal/epl-v10.html
- * 
- * Contributors:
- *     actifsource GmbH - initial API and implementation
- ******************************************************************************/
 package ch.actifsource.example.searchstrategyaspect.simple;
 
 import java.util.ArrayList;
