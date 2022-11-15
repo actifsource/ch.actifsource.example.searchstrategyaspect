@@ -13,14 +13,13 @@ import ch.actifsource.core.set.IStatementSet;
 import ch.actifsource.example.searchstrategyaspect.generic.GenericPackage;
 import ch.actifsource.ui.search.label.ElementLabelProvider.Mode;
 import ch.actifsource.ui.search.query.IActifsourceSearchQuery;
-import ch.actifsource.ui.search.query.strategy.aspect.HierarchySearchStrategyAspect;
+import ch.actifsource.ui.search.query.strategy.aspect.SimpleHierarchySearchStrategyAspect;
 import ch.actifsource.ui.search.util.AsMatch;
-import ch.actifsource.ui.search.util.AsMatch.IMatchHandler;
-import ch.actifsource.ui.search.util.SelectSearchUtil.IMatchElementVisitor;
-import ch.actifsource.ui.search.util.SelectSearchUtil;
+import ch.actifsource.ui.search.util.ICustomElement;
+import ch.actifsource.ui.widget.cache.IImageReference;
 
 
-public class TestHierarchySearchStrategyAspect extends HierarchySearchStrategyAspect {
+public class TestHierarchySearchStrategyAspect extends SimpleHierarchySearchStrategyAspect {
 
   @Override
   protected List<Object> getChildren(IReadJobExecutor executor, IActifsourceSearchQuery query, PackagedResource parent) {
@@ -38,46 +37,81 @@ public class TestHierarchySearchStrategyAspect extends HierarchySearchStrategyAs
     return nodes;
   }
   
-  /**
-   * Returns the child element match 
-   */
-  @CheckForNull
-  protected AsMatch createChildMatch(@CheckForNull Object parentElement, final Object childElement) {
-	  return new AsMatch(childElement, new IMatchHandler() {
-		
-		@Override
-		public StyledString getMatchText(final IReadJobExecutor executor, final AsMatch match, final Mode mode) {
-		  return SelectSearchUtil.visitElement(executor, childElement, new IMatchElementVisitor<StyledString>() {
-			
-		      @Override
-		      public StyledString visit(Statement statement) {
-		    	  return new StyledString(Select.simpleName(executor, statement.object()));
-		      }
-		
-		      @Override
-		      public StyledString visit(PackagedResource packagedResource) {
-		    	  return new StyledString(Select.simpleName(executor, packagedResource.getResource()));
-		      }
-		
-		      @Override
-		      public StyledString visit(INode node) {
-		        return getNodeResourceText(executor, node);
-		      }
-		      
-		      @Override
-		      public StyledString visit(ch.actifsource.core.Package pkg) {
-		        return getPackageText(pkg);
-		      }
-		    }, null);
-		  
-		}
-		
-		@Override
-		public boolean showMatch(final IReadJobExecutor executor, AsMatch match, final int currentOffset, final int currentLength, final boolean activate) {
-			return SelectSearchUtil.showMatchInsideEditor(executor, match, activate);
-		}
-	});
+  @Override
+  protected List<Object> getChildren(final IReadJobExecutor executor, final IActifsourceSearchQuery query, INode node) {
+    return super.getChildren(executor, query, node);
   }
   
+  @Override
+  protected List<Object> getChildren(final IReadJobExecutor executor, final IActifsourceSearchQuery query, ch.actifsource.core.Package pkg) {
+    return super.getChildren(executor, query, pkg);
+  }
+  
+  @Override
+  protected List<Object> getChildren(final IReadJobExecutor executor, final IActifsourceSearchQuery query, ICustomElement element) {
+    return super.getChildren(executor, query, element);
+  }
+  
+  /********************
+   * Override Show match
+   ********************/
+ 
+  @Override
+  protected boolean showMatchInsideEditor(final IReadJobExecutor executor, AsMatch match, final int currentOffset, final int currentLength, final boolean activate) {
+    return super.showMatchInsideEditor(executor, match, currentOffset, currentLength, activate);
+  }
+  
+  /********************
+   * Override Display Name
+   ********************/
+  
+  @Override
+  protected StyledString getDisplayText(IReadJobExecutor executor, Mode mode, @CheckForNull Object parent, Statement statement, AsMatch match) {
+    return super.getDisplayText(executor, mode, parent, statement, match);
+  }
+
+  @Override
+  protected StyledString getDisplayText(IReadJobExecutor executor, Mode mode, @CheckForNull Object parent, PackagedResource packagedResource, AsMatch match) {
+    return super.getDisplayText(executor, mode, parent, packagedResource, match);
+  }
+
+  @Override
+  protected StyledString getDisplayText(IReadJobExecutor executor, Mode mode, @CheckForNull Object parent, INode node, AsMatch match) {
+    return super.getDisplayText(executor, mode, parent, node, match);
+  }
+  
+  @Override
+  protected StyledString getDisplayText(IReadJobExecutor executor, Mode mode, @CheckForNull Object parent, ch.actifsource.core.Package pkg, AsMatch match) {
+    return super.getDisplayText(executor, mode, parent, pkg, match);
+  }
+  
+  @Override
+  protected StyledString getDisplayText(IReadJobExecutor executor, Mode mode, @CheckForNull Object parent, ICustomElement element, AsMatch match) {
+    return super.getDisplayText(executor, mode, parent, element, match);
+  }
+  
+  /********************
+   * Override Display Image
+   ********************/
+  
+  @Override
+  protected IImageReference getDisplayImageReference(IReadJobExecutor executor, IActifsourceSearchQuery query, Statement statement) {
+    return super.getDisplayImageReference(executor, query, statement);
+  }
+  
+  @Override
+  protected IImageReference getDisplayImageReference(IReadJobExecutor executor, IActifsourceSearchQuery query, PackagedResource packagedResource) {
+    return super.getDisplayImageReference(executor, query, packagedResource);
+  }
+  
+  @Override
+  protected IImageReference getDisplayImageReference(IReadJobExecutor executor, IActifsourceSearchQuery query, INode node) {
+    return super.getDisplayImageReference(executor, query, node);
+  }
+  
+  @Override
+  protected IImageReference getDisplayImageReference(IReadJobExecutor executor, IActifsourceSearchQuery query, ch.actifsource.core.Package pkg) {
+    return super.getDisplayImageReference(executor, query, pkg);
+  }
 
 }
