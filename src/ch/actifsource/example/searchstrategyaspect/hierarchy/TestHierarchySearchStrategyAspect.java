@@ -21,6 +21,8 @@ import ch.actifsource.ui.widget.cache.IImageReference;
 
 public class TestHierarchySearchStrategyAspect extends SimpleHierarchySearchStrategyAspect {
 
+  public static final String SEARCH_STRATEGY_ID = "HirarchySearchTestID";
+  
   @Override
   protected List<Object> getChildren(IReadJobExecutor executor, IActifsourceSearchQuery query, PackagedResource parent) {
 	IStatementSet childs = Select.statementsForRelation(executor, GenericPackage.CompositionClass_composition, parent.getResource());

@@ -19,8 +19,6 @@ import ch.actifsource.util.collection.CollectionUtil;
 
 public class SimpleSearchCommand extends AbstractHandler {
 
-	public static final String SEARCH_STRATEGY_ID = "SimpleSearchTestID";
-
 	public static java.util.List<?> getSelection(@CheckForNull ISelection currentSelection) {
 		IStructuredSelection structuredSelection = ObjectUtil.castOrNull(currentSelection, IStructuredSelection.class);
 		if (structuredSelection == null) return Collections.emptyList();
@@ -44,7 +42,7 @@ public class SimpleSearchCommand extends AbstractHandler {
 	  if (resource == null) return null;
 	  
 	  ResourcePatternData patternData = new ResourcePatternData(resource,"Resource: ");
-	  QueryData queryData = new QueryData(patternData, SEARCH_STRATEGY_ID, null, null, null, new ArrayList<IProject>(), HandlerUtil.getCurrentSelection(event));
+	  QueryData queryData = new QueryData(patternData, SimpleSearchStrategyAspect.SEARCH_STRATEGY_ID, null, null, null, new ArrayList<IProject>(), HandlerUtil.getCurrentSelection(event));
 	  SelectSearchUtil.executeSearchQuery(queryData);
 	  return null;
   }

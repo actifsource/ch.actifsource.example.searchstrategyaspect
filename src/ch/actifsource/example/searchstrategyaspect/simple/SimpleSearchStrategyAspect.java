@@ -20,6 +20,8 @@ import ch.actifsource.ui.search.util.SelectSearchUtil;
 
 public class SimpleSearchStrategyAspect extends DefaultSearchStrategyAspect {
   
+  public static final String SEARCH_STRATEGY_ID = "SimpleSearchTestID";
+  
   @Override
   public ISearchQueryStrategy createSearchQueryStrategy(IReadJobExecutor executor, IActifsourceSearchQuery query) {
     return new DefaultAspectQuery() {
@@ -33,8 +35,8 @@ public class SimpleSearchStrategyAspect extends DefaultSearchStrategyAspect {
         IStatementSet childs = Select.statementsForRelation(executor, GenericPackage.CompositionClass_composition, resource);
         for (Statement child: childs) {
         	AsMatch match = new AsMatch(child);    
-            match.setAssignmentGroup(SelectSearchUtil.getFirstNamedResourceInsideStatementPath(executor, child.getPackage(), child.subject()));
-            matchResults.add(match);
+          match.setAssignmentGroup(SelectSearchUtil.getFirstNamedResourceInsideStatementPath(executor, child.getPackage(), child.subject()));
+          matchResults.add(match);
         }
         
         query.getSearchResult().addMatches(matchResults);

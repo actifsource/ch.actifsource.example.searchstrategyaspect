@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<resource format="5.6.0" guid="fac35ea0-886b-11ee-8ced-2d7833d4fb90">
+  <predicate guid="3169f49a-f91f-11d9-bb45-5fabdff7c7da">
+    <object statement-guid="fac35ea1-886b-11ee-8ced-2d7833d4fb90" type="resource" guid="21d630db-fcbb-11e9-aa26-3d70b64de327" />
+  </predicate>
+  <predicate guid="33fc8660-f91f-11d9-bb45-5fabdff7c7da">
+    <object statement-guid="fac35ea2-886b-11ee-8ced-2d7833d4fb90" type="literal">CustromElementSearch_ID</object>
+  </predicate>
+  <predicate guid="95205a8d-fcbb-11e9-aa26-3d70b64de327">
+    <object statement-guid="fac35ea3-886b-11ee-8ced-2d7833d4fb90" type="literal">CustromElementSearchTestID</object>
+  </predicate>
+</resource>
+
