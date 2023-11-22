@@ -47,7 +47,7 @@ public class TestExtendReferenceSearchStrategyAspect extends DefaultSearchStrate
     
     @Override
     public int hashCode() {
-      return 44+fResource.hashCode();
+      return fResource.hashCode();
     }
     
     @Override
@@ -83,14 +83,17 @@ public class TestExtendReferenceSearchStrategyAspect extends DefaultSearchStrate
             @Override
             public StyledString getMatchText(final IReadJobExecutor executor, final AsMatch match, final Mode mode) {
               StyledString result = new StyledString();
-              result.append("ExtendedRef: ");
+              result.append("Child ");
               result.append(Select.simpleName(executor, child.object()));
+              result.append(" has ref to parent ");
+              result.append(Select.simpleName(executor, resource));
               return result; 
             }
             
           });    
             
-          match.setAssignmentGroup(SelectSearchUtil.getFirstNamedResourceInsideStatementPath(executor, child.getPackage(), child.subject()));
+          // Set the parent from the match is used to if 'Show as Tree' is active
+          match.setAssignmentGroup(Select.asPackagedResource(executor, resource));
           matchResults.add(match);
         }
         
